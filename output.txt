@@ -1,0 +1,119 @@
+curl --location --request POST 'https://wellbeing.apis.test.lifeworks.com/wellbeing-graphql-api/graphql' --header 'Host: wellbeing.apis.test.lifeworks.com' --header 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"' --header 'wam-token: 9iuzeuww168f4e8b11a6a4f1a4cc8ce94bf5abe1c48a73cb70f7fe0e7775c51fa19d' --header 'sec-ch-ua-mobile: ?0' --header 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36' --header 'lw-language: en_GB' --header 'content-type: application/json' --header 'accept: */*' --header 'sec-ch-ua-platform: "macOS"' --header 'client-date: 2022-03-16T12:33:12+00:00' --header 'origin: https://bvtestcompuk.test.lifeworks.com' --header 'sec-fetch-site: same-site' --header 'sec-fetch-mode: cors' --header 'sec-fetch-dest: empty' --header 'referer: https://bvtestcompuk.test.lifeworks.com/' --header 'accept-language: en-US,en;q=0.9' --data-raw '[{"operationName":"TieringHubQuery","variables":{},"query":"fragment CustomTieringActivityListItemFragment on CustomTierActivity {
+  activityId
+  title
+  description
+  tierPointAward {
+    frequency
+    points
+    __typename
+  }
+  image {
+    url
+    __typename
+  }
+  status
+  __typename
+}
+
+fragment TieringHubTierPointsFragment on TierPoints {
+  id
+  earned {
+    total
+    thisMonth {
+      value
+      since
+      __typename
+    }
+    __typename
+  }
+  remainingToReachNextTier
+  requiredToNotRegress {
+    total
+    remaining
+    thisMonth {
+      value
+      remaining
+      daysRemaining
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment TieringHubNextTierFragment on NextTier {
+  id
+  name
+  rank
+  meetsRequirementsForTier
+  __typename
+}
+
+fragment TieringHubCurrentTierFragment on CurrentTier {
+  id
+  name
+  rank
+  motivationalMessage
+  __typename
+}
+
+fragment TieringHubAllTiersFragment on TierDefinition {
+  name
+  rank
+  points
+  __typename
+}
+
+fragment TierRegressionInfoFragment on TierRegressionInfo {
+  image {
+    url
+    font {
+      color {
+        hexCode
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  timePeriods {
+    isCurrent
+    timePeriod {
+      from
+      to
+      __typename
+    }
+    pointsEarned
+    pointGoal
+    __typename
+  }
+  __typename
+}
+
+query TieringHubQuery {
+  customTierActivities {
+    ...CustomTieringActivityListItemFragment
+    __typename
+  }
+  tierPoints {
+    ...TieringHubTierPointsFragment
+    __typename
+  }
+  nextTier {
+    ...TieringHubNextTierFragment
+    __typename
+  }
+  currentTier {
+    ...TieringHubCurrentTierFragment
+    __typename
+  }
+  allTiers {
+    ...TieringHubAllTiersFragment
+    __typename
+  }
+  tierRegressionInfo {
+    ...TierRegressionInfoFragment
+    __typename
+  }
+}
+"}]'
